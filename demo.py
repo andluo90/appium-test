@@ -25,28 +25,31 @@ class ContactsAndroidTests(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+    @unittest.skip
     def test_add_contacts(self):
-        # el = self.driver.find_element_by_accessibility_id("Add Contact")
-        # el.click()
-        #
-        # textfields = self.driver.find_elements_by_class_name("android.widget.EditText")
-        # textfields[0].send_keys("Appium User")
-        # textfields[2].send_keys("someone@appium.io")
-        #
-        # self.assertEqual('Appium User', textfields[0].text)
-        # self.assertEqual('someone@appium.io', textfields[2].text)
-        #
-        # self.driver.find_element_by_accessibility_id("Save").click()
-        #
-        # # for some reason "save" breaks things
-        # alert = self.driver.switch_to_alert()
-        #
-        # # no way to handle alerts in Android
-        # self.driver.find_element_by_android_uiautomator('new UiSelector().clickable(true)').click()
-        #
-        # self.driver.press_keycode(3)
-        self.driver.find_element_by_id("com.guazi.android.chesupai:id/tv_subscribe").click()
+        el = self.driver.find_element_by_accessibility_id("Add Contact")
+        el.click()
 
+        textfields = self.driver.find_elements_by_class_name("android.widget.EditText")
+        textfields[0].send_keys("Appium User")
+        textfields[2].send_keys("someone@appium.io")
+
+        self.assertEqual('Appium User', textfields[0].text)
+        self.assertEqual('someone@appium.io', textfields[2].text)
+
+        self.driver.find_element_by_accessibility_id("Save").click()
+
+        # for some reason "save" breaks things
+        alert = self.driver.switch_to_alert()
+
+        # no way to handle alerts in Android
+        self.driver.find_element_by_android_uiautomator('new UiSelector().clickable(true)').click()
+
+        self.driver.press_keycode(3)
+
+
+    def test_auction(self):
+        self.driver.find_element_by_id("com.guazi.android.chesupai:id/tv_subscribe").click()
 
 
 if __name__ == '__main__':
